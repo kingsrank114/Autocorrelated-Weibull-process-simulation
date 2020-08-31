@@ -18,7 +18,7 @@ acf_method <- function(y, sigma, d){
 }
 
 
-#Generate first-order autocorrelated Exponential Distribution
+#Generate first-order autocorrelated Weibull Distribution process
 
 #Input
 #n --- Number of sample size desired
@@ -35,7 +35,7 @@ acf_method <- function(y, sigma, d){
 
 #Conditional distribution
 
-#CDF function of first-order autocorrelated exponential distribution
+#CDF function of first-order autocorrelated Weibull distribution
 library(zipfR)
 
 F1 <- function(y, k, lambda, rho, y_previous, u){
@@ -177,7 +177,7 @@ pweibull(y, k, lambda, lower.tail = TRUE) + (rho * (k/lambda) * (y_previous - me
 
 #..............................................................................................................................
 #.............................................................................................................................................................................................
-#Generate first-order autocorrelated Exponential Distribution
+#Generate Second-order autocorrelated Weibull Distribution
 
 #Input
 #n --- Number of sample size desired
@@ -185,7 +185,7 @@ pweibull(y, k, lambda, lower.tail = TRUE) + (rho * (k/lambda) * (y_previous - me
 #lambda --- Weibull distribution scale parameter (lambda > 0)
 #rho1 --- first-order autocorrelation 
 #rho2 --- second-order autocorrelation
-#rho_star --- three-way autocorrelation
+#rho_star --- three-way mixed autocorrelation, i.e., rho_012
 
 #Output
 #mean_parameter --- The theoretical mean for Weibull distribution   
@@ -196,7 +196,7 @@ pweibull(y, k, lambda, lower.tail = TRUE) + (rho * (k/lambda) * (y_previous - me
 #rho2_est --- Estimated second-order autocorrelation
 #rho_star_est --- Estimated three-way autocorrelation
 
-#CDF function of first-order autocorrelated exponential distribution
+#CDF function of first-order autocorrelated Weibull distribution
 F2 <- function(y, k, lambda, rho1, rho2, rho_star, y_p1, y_p2, u){
   
   mean <- lambda * gamma(1 + 1/k)
